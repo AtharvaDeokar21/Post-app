@@ -62,11 +62,11 @@ python manage.py runserver
 
 ## Screenshots
 
-- **Home Page**
-`![Home Page](screenshots/home.png)`
+### Home Page
+![Home Page](screenshots/home.png)
 
-- **Profile Page**
-`![Profile Page](screenshots/profile.png)`
+### Profile Page
+![Profile Page](screenshots/profile.png)
 
 ## Contributing
 
