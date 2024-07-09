@@ -3,26 +3,26 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    {% for post in posts %}
-        <!-- component from tailwind post-artical-->
-        <div class="max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md" style="width: 50rem">
-            <div class="flex justify-between items-center">
-                <span class="font-light text-gray-600">{{ post.date|date:"F j, Y, g:i:a" }}</span>
-                <!-- <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Design</a> -->
-            </div>
-            <div class="mt-2">
-                <!-- <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">Accessibility tools for designers and developers</a> -->
-                <p class="mt-2 text-gray-600">{{ post.text }}</p>
-            </div>
-            <div class="flex justify-between items-center mt-4">
-                <a class="text-blue-600 hover:underline" href="#">Read more</a>
-                <div>
-                    <a class="flex items-center" href="#">
-                        <img class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
-                        <h1 class="text-gray-700 font-bold">Khatab wedaa</h1>
-                    </a>
+    <div id="posts-container" class="px-4 md:px-16">
+        <h1 class="text-2xl md:text-3xl font-bold mb-4 text-gray-100">Posts from accounts you follow</h1>
+        <div class="space-y-4">
+            {% for post in posts %}
+                <div class="bg-gray-700 text-gray-100 p-4 md:p-6 rounded-lg shadow-md">
+                    {% include "includes/post.html" with post=post show_detail_link=True %}
                 </div>
-            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        
+        {% if random_posts %}
+            <hr class="my-8 border-gray-600">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-100">You may also like:</h2>
+            <div class="space-y-4">
+                {% for post in random_posts %}
+                    <div class="bg-gray-700 text-gray-100 p-4 md:p-6 rounded-lg shadow-md">
+                        {% include "includes/post.html" with post=post show_detail_link=True %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
